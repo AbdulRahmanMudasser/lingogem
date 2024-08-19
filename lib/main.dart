@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lingogem/screens/home_screen.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:lingogem/components/toggle_screens.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,14 +11,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'LingoGem',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
-        useMaterial3: true,
-      ),
-      debugShowCheckedModeBanner: false,
-      home: const HomeScreen(),
+    return ScreenUtilInit(
+      designSize: MediaQuery.of(context).size,
+      minTextAdapt: true,
+      useInheritedMediaQuery: true,
+      splitScreenMode: false,
+      builder: (_, child) {
+        return MaterialApp(
+          title: 'LingoGem',
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
+            useMaterial3: true,
+          ),
+          debugShowCheckedModeBanner: false,
+          home: const ToggleScreens(),
+        );
+      },
     );
   }
 }
