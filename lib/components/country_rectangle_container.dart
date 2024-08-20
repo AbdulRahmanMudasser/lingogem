@@ -78,9 +78,9 @@ class _CountryRectangleContainerState extends State<CountryRectangleContainer> {
                 child: Container(
                   width: 150.w,
                   height: 50,
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 15,
-                    horizontal: 15,
+                  padding: EdgeInsets.symmetric(
+                    vertical: 15.w,
+                    horizontal: 15.w,
                   ),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
