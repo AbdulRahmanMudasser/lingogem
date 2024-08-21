@@ -49,7 +49,10 @@ class _CountryRectangleContainerState extends State<CountryRectangleContainer> {
   @override
   Widget build(BuildContext context) {
     // Use a Set to filter out duplicates based on the country name
-    final uniqueCountries = CountriesData.countriesData.toSet();
+    final uniqueCountries = CountriesData.countriesData.toSet().toList();
+
+    // Slice the list to take only the first 8 items
+    final displayedCountries = uniqueCountries.take(8).toList();
 
     return RefreshIndicator(
       onRefresh: () async {
@@ -60,7 +63,7 @@ class _CountryRectangleContainerState extends State<CountryRectangleContainer> {
           spacing: 15.w,
           runSpacing: 10,
           direction: Axis.horizontal,
-          children: uniqueCountries.map(
+          children: displayedCountries.map(
             (country) {
               // Check If The Current Country Is Selected
               bool isSelected = country["countryName"] == selectedCountry;

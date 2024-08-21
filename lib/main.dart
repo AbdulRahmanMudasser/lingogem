@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lingogem/components/toggle_screens.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   SystemChrome.setSystemUIOverlayStyle(
@@ -12,6 +13,8 @@ void main() {
       statusBarIconBrightness: Brightness.dark,
     ),
   );
+
+  await dotenv.load(fileName: ".env");
 
   runApp(const MyApp());
 }
