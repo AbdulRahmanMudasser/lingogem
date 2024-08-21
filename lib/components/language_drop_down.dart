@@ -26,7 +26,7 @@ class _LanguageDropDownState extends State<LanguageDropDown> {
       // width: ScreenUtil().screenWidth / 2.28,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        color: Colors.white,
+        color: Colors.grey.withOpacity(0.05),
         border: Border.all(
           color: Colors.black.withOpacity(0.5),
           width: 0.1,
@@ -45,12 +45,9 @@ class _LanguageDropDownState extends State<LanguageDropDown> {
             color: const Color(0xFF000000),
           ),
         ),
-        icon: const Align(
-          alignment: Alignment.centerRight,
-          child: Icon(
-            Icons.keyboard_arrow_down_rounded,
-            color: Color(0xFF000000),
-          ),
+        icon: const Icon(
+          Icons.keyboard_arrow_down_rounded,
+          color: Color(0xFF000000),
         ),
         underline: Container(
           color: Colors.transparent,
@@ -76,8 +73,9 @@ class _LanguageDropDownState extends State<LanguageDropDown> {
                   ),
                   Text(
                     countryLanguage["countryLanguage"]!,
+                    overflow: TextOverflow.ellipsis,
                     style: GoogleFonts.poppins(
-                      fontSize: 14,
+                      fontSize: 12,
                       color: selectedCountry == countryLanguage["countryLanguage"]
                           ? Colors.black
                           : Colors.black.withOpacity(0.5),

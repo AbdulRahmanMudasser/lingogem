@@ -52,7 +52,7 @@ class CountriesData {
 
   static final List<Map<String, String>> translateToCountryLanguage = [
     {
-      'countryLanguage': 'English - USA', // USA
+      'countryLanguage': 'English - US', // USA
       'countryImage': 'assets/images/usa.png',
     },
     {

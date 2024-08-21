@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lingogem/components/country_rectangle_container.dart';
 import 'package:lingogem/components/get_started_button.dart';
-import 'package:lingogem/components/right_arrow_container.dart';
 import 'package:lingogem/screens/prompt_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -122,7 +121,24 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               );
                             },
-                            child: const RightArrowContainer(),
+                            child: Container(
+                              width: ScreenUtil().screenWidth - 50,
+                              height: 35,
+                              margin: const EdgeInsets.only(top: 20),
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                color: Colors.black.withOpacity(0.5),
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: Text(
+                                "Get Started",
+                                style: GoogleFonts.poppins(
+                                  fontWeight: FontWeight.w300,
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ),
                           ),
                         ],
                       ),
