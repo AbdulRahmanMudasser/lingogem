@@ -84,9 +84,17 @@ class _PromptScreenState extends State<PromptScreen> {
     try {
       final model = GenerativeModel(model: 'gemini-1.5-flash', apiKey: apiKey);
 
+      // final prompt = [
+      //   Content.text(
+      //       "Translate only $inputText from $fromLanguage to $toLanguage. Just provide the translation in $toLanguage"),
+      // ];
+
       final prompt = [
         Content.text(
-            "Translate only $inputText from $fromLanguage to $toLanguage. Just provide the translation in $toLanguage"),
+            "You are a translation model. Your task is to translate the following text from $fromLanguage to $toLanguage:\n\n"
+            "Input: \"$inputText\"\n\n"
+            "Please return only the translated text in $toLanguage. "
+            "If the input text is not a valid word or sentence in $fromLanguage, respond with: 'Please input a valid word or sentence.'"),
       ];
 
       final response = await model.generateContent(prompt);
