@@ -41,41 +41,41 @@ class PromptScreenController extends GetxController {
     textEditingController.addListener(updateWordCount);
 
     // Initialize TTS handlers for "Translate From"
-    flutterTts.setStartHandler(() {
-      if (!isSpeakingFrom.value) {
-        isSpeakingFrom.value = true;
-        debugPrint("TTS Started for Translate From");
-      }
-
-      if (!isSpeakingTo.value) {
-        isSpeakingTo.value = true;
-        debugPrint("TTS Started for Translate To");
-      }
-    });
-
-    flutterTts.setCompletionHandler(() {
-      if (isSpeakingFrom.value) {
-        isSpeakingFrom.value = false;
-        debugPrint("TTS Completed for Translate From");
-      }
-
-      if (isSpeakingTo.value) {
-        isSpeakingTo.value = false;
-        debugPrint("TTS Completed for Translate To");
-      }
-    });
-
-    flutterTts.setCancelHandler(() {
-      if (isSpeakingFrom.value) {
-        isSpeakingFrom.value = false;
-        debugPrint("TTS Cancelled for Translate From");
-      }
-
-      if (isSpeakingTo.value) {
-        isSpeakingTo.value = false;
-        debugPrint("TTS Cancelled for Translate To");
-      }
-    });
+    // flutterTts.setStartHandler(() {
+    //   if (!isSpeakingFrom.value) {
+    //     isSpeakingFrom.value = true;
+    //     debugPrint("TTS Started for Translate From");
+    //   }
+    //
+    //   if (!isSpeakingTo.value) {
+    //     isSpeakingTo.value = true;
+    //     debugPrint("TTS Started for Translate To");
+    //   }
+    // });
+    //
+    // flutterTts.setCompletionHandler(() {
+    //   if (isSpeakingFrom.value) {
+    //     isSpeakingFrom.value = false;
+    //     debugPrint("TTS Completed for Translate From");
+    //   }
+    //
+    //   if (isSpeakingTo.value) {
+    //     isSpeakingTo.value = false;
+    //     debugPrint("TTS Completed for Translate To");
+    //   }
+    // });
+    //
+    // flutterTts.setCancelHandler(() {
+    //   if (isSpeakingFrom.value) {
+    //     isSpeakingFrom.value = false;
+    //     debugPrint("TTS Cancelled for Translate From");
+    //   }
+    //
+    //   if (isSpeakingTo.value) {
+    //     isSpeakingTo.value = false;
+    //     debugPrint("TTS Cancelled for Translate To");
+    //   }
+    // });
   }
 
   @override
