@@ -73,7 +73,7 @@ class TranslateFrom extends GetView<PromptScreenController> {
                     color: const Color(0xFF000000),
                   ),
                 ),
-
+                
                 // Speak, Mute Button
                 GestureDetector(
                   onTap: () {
