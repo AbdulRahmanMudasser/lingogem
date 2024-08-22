@@ -13,6 +13,7 @@ class TranslateTo extends GetView<PromptScreenController> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        // Translated Text
         Expanded(
           child: SingleChildScrollView(
             child: Text(
@@ -62,6 +63,7 @@ class TranslateTo extends GetView<PromptScreenController> {
               width: 10,
             ),
 
+            // Speak, Mute Button
             GestureDetector(
               onTap: () {
                 if (controller.isSpeakingTo.value) {

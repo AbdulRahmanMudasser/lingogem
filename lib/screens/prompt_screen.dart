@@ -34,6 +34,7 @@ class PromptScreen extends GetView<PromptScreenController> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    // Language Translation Text
                     Text(
                       "Language Translation",
                       style: GoogleFonts.poppins(
@@ -42,6 +43,8 @@ class PromptScreen extends GetView<PromptScreenController> {
                         color: const Color(0xFF000000),
                       ),
                     ),
+
+                    // Icon
                     const Icon(
                       Icons.text_fields_outlined,
                       size: 22,
