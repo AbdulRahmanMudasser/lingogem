@@ -113,7 +113,7 @@ class PromptScreenController extends GetxController {
           message,
           style: GoogleFonts.poppins(fontSize: 12, color: Colors.white),
         ),
-        margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+        margin: const EdgeInsets.symmetric(horizontal: 60, vertical: 20),
         behavior: SnackBarBehavior.floating,
       ),
     );

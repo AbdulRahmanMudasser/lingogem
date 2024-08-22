@@ -18,7 +18,11 @@ class PromptScreen extends GetView<PromptScreenController> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: EdgeInsets.only(top: kIsWeb ? 10.h : 30.h, left: 10.w, right: 10.w),
+        padding: EdgeInsets.only(
+          top: kIsWeb ? 0.h : 30.h,
+          left: kIsWeb ? 40.w : 10.w,
+          right: kIsWeb ? 40.w : 10.w,
+        ),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -30,7 +34,7 @@ class PromptScreen extends GetView<PromptScreenController> {
                     bottom: BorderSide(color: Colors.black.withOpacity(0.5), width: 0.2),
                   ),
                 ),
-                padding: EdgeInsets.only(top: 15.h, bottom: 15.h),
+                padding: EdgeInsets.only(top: kIsWeb ? 25.h : 15.h, bottom: 15.h),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -53,175 +57,353 @@ class PromptScreen extends GetView<PromptScreenController> {
                   ],
                 ),
               ),
-
               Container(
                 width: ScreenUtil().screenWidth,
-                padding: EdgeInsets.only(top: kIsWeb ? 50.h : 40.h),
+                padding: EdgeInsets.only(top: kIsWeb ? 30.h : 40.h),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: kIsWeb ? CrossAxisAlignment.end : CrossAxisAlignment.center,
                   children: [
                     // Drop Down for Selected Country Language From
-                    SizedBox(
-                      width: ScreenUtil().screenWidth / 2.4,
-                      child: LanguageDropDown(
-                        onLanguageChanged: controller.handleSelectedCountryFrom,
-                        hintText: "From",
-                      ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        if (kIsWeb)
+                          Text(
+                            "Select a Language to Translate From",
+                            style: GoogleFonts.poppins(
+                              fontSize: kIsWeb ? 14.sp : 14,
+                              fontWeight: FontWeight.w300,
+                              color: Colors.black,
+                            ),
+                          ),
+                        if (kIsWeb)
+                          SizedBox(
+                            height: 20.h,
+                          ),
+                        SizedBox(
+                          width: ScreenUtil().screenWidth / 2.4,
+                          child: LanguageDropDown(
+                            onLanguageChanged: controller.handleSelectedCountryFrom,
+                            hintText: "From",
+                          ),
+                        ),
+                      ],
                     ),
 
                     // Swap Button
-                    const Icon(Icons.swap_horiz_outlined),
+                    const Column(
+                      children: [
+                        Icon(Icons.swap_horiz_outlined),
+                        SizedBox(
+                          height: 15,
+                        ),
+                      ],
+                    ),
 
                     // Drop Down for Selected Country Language To
-                    SizedBox(
-                      width: ScreenUtil().screenWidth / 2.4,
-                      child: LanguageDropDown(
-                        onLanguageChanged: controller.handleSelectedCountryTo,
-                        hintText: "To",
-                      ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        if (kIsWeb)
+                          Text(
+                            "Select a Language to Translate To",
+                            style: GoogleFonts.poppins(
+                              fontSize: kIsWeb ? 14.sp : 14,
+                              fontWeight: FontWeight.w300,
+                              color: Colors.black,
+                            ),
+                          ),
+                        if (kIsWeb)
+                          SizedBox(
+                            height: 20.h,
+                          ),
+                        SizedBox(
+                          width: ScreenUtil().screenWidth / 2.4,
+                          child: LanguageDropDown(
+                            onLanguageChanged: controller.handleSelectedCountryTo,
+                            hintText: "To",
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
               ),
-
               SizedBox(
                 height: 30.h,
               ),
-
-              // Selected Language From Text
-              Obx(
-                () {
-                  return Row(
-                    children: [
-                      Text(
-                        "Translate From",
-                        style: GoogleFonts.poppins(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w300,
-                          color: Colors.black,
+              if (kIsWeb)
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // Selected Language From Text
+                        Obx(
+                          () {
+                            return Row(
+                              children: [
+                                Text(
+                                  "Translate From",
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w300,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  controller.selectedCountryFrom.value,
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
                         ),
-                      ),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      Text(
-                        controller.selectedCountryFrom.value,
-                        style: GoogleFonts.poppins(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.black,
+
+                        SizedBox(
+                          height: 20.h,
                         ),
-                      ),
-                    ],
-                  );
-                },
-              ),
 
-              SizedBox(
-                height: 20.h,
-              ),
-
-              // Selected Language From TextField
-              Container(
-                width: ScreenUtil().screenWidth,
-                height: 220.h,
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  color: Colors.grey.withOpacity(0.05),
-                  border: Border.all(
-                    color: Colors.black.withOpacity(0.5),
-                    width: 0.1,
-                  ),
-                ),
-                child: const TranslateFrom(),
-              ),
-
-              SizedBox(
-                height: 20.h,
-              ),
-
-              // Selected Language To Text
-              Obx(
-                () {
-                  return Row(
-                    children: [
-                      Text(
-                        "Translate To",
-                        style: GoogleFonts.poppins(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w300,
-                          color: Colors.black,
+                        // Selected Language From TextField
+                        Container(
+                          width: ScreenUtil().screenWidth / 2.4,
+                          height: 220.h,
+                          padding: const EdgeInsets.all(12),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            color: Colors.grey.withOpacity(0.05),
+                            border: Border.all(
+                              color: Colors.black.withOpacity(0.5),
+                              width: 0.1,
+                            ),
+                          ),
+                          child: const TranslateFrom(),
                         ),
-                      ),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      Text(
-                        controller.selectedCountryTo.value,
-                        style: GoogleFonts.poppins(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.black,
+                      ],
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // Selected Language To Text
+                        Obx(
+                          () {
+                            return Row(
+                              children: [
+                                Text(
+                                  "Translate To",
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w300,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  controller.selectedCountryTo.value,
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
                         ),
-                      ),
-                    ],
-                  );
-                },
-              ),
 
-              SizedBox(
-                height: 20.h,
-              ),
+                        SizedBox(
+                          height: 20.h,
+                        ),
 
-              // Selected Language To TextField
-              Container(
-                width: ScreenUtil().screenWidth,
-                height: 220.h,
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  color: Colors.grey.withOpacity(0.05),
-                  border: Border.all(
-                    color: Colors.black.withOpacity(0.5),
-                    width: 0.1,
-                  ),
-                ),
-                child: Obx(
-                  () {
-                    return controller.isLoading.value
-                        ? Center(
-                            child: Container(
-                              padding: const EdgeInsets.all(12),
-                              height: 50,
-                              width: 50,
-                              decoration: const BoxDecoration(
-                                color: Colors.white,
-                                shape: BoxShape.circle,
-                              ),
-                              child: const CircularProgressIndicator(
+                        // Selected Language To TextField
+                        Container(
+                          width: ScreenUtil().screenWidth / 2.4,
+                          height: 220.h,
+                          padding: const EdgeInsets.all(12),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            color: Colors.grey.withOpacity(0.05),
+                            border: Border.all(
+                              color: Colors.black.withOpacity(0.5),
+                              width: 0.1,
+                            ),
+                          ),
+                          child: Obx(
+                            () {
+                              return controller.isLoading.value
+                                  ? Center(
+                                      child: Container(
+                                        padding: const EdgeInsets.all(12),
+                                        height: 50,
+                                        width: 50,
+                                        decoration: const BoxDecoration(
+                                          color: Colors.white,
+                                          shape: BoxShape.circle,
+                                        ),
+                                        child: const CircularProgressIndicator(
+                                          color: Colors.black,
+                                          strokeWidth: 2,
+                                        ),
+                                      ),
+                                    )
+                                  : TranslateTo(
+                                      translatedText: controller.translatedText.value,
+                                    );
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                )
+              else
+                Column(
+                  children: [
+                    // Selected Language From Text
+                    Obx(
+                      () {
+                        return Row(
+                          children: [
+                            Text(
+                              "Translate From",
+                              style: GoogleFonts.poppins(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w300,
                                 color: Colors.black,
-                                strokeWidth: 2,
                               ),
                             ),
-                          )
-                        : TranslateTo(
-                            translatedText: controller.translatedText.value,
-                          );
-                  },
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              controller.selectedCountryFrom.value,
+                              style: GoogleFonts.poppins(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
+                        );
+                      },
+                    ),
+
+                    SizedBox(
+                      height: 20.h,
+                    ),
+
+                    // Selected Language From TextField
+                    Container(
+                      width: ScreenUtil().screenWidth,
+                      height: 220.h,
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: Colors.grey.withOpacity(0.05),
+                        border: Border.all(
+                          color: Colors.black.withOpacity(0.5),
+                          width: 0.1,
+                        ),
+                      ),
+                      child: const TranslateFrom(),
+                    ),
+
+                    SizedBox(
+                      height: 20.h,
+                    ),
+
+                    // Selected Language To Text
+                    Obx(
+                      () {
+                        return Row(
+                          children: [
+                            Text(
+                              "Translate To",
+                              style: GoogleFonts.poppins(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w300,
+                                color: Colors.black,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              controller.selectedCountryTo.value,
+                              style: GoogleFonts.poppins(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
+                        );
+                      },
+                    ),
+
+                    SizedBox(
+                      height: 20.h,
+                    ),
+
+                    // Selected Language To TextField
+                    Container(
+                      width: ScreenUtil().screenWidth,
+                      height: 220.h,
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: Colors.grey.withOpacity(0.05),
+                        border: Border.all(
+                          color: Colors.black.withOpacity(0.5),
+                          width: 0.1,
+                        ),
+                      ),
+                      child: Obx(
+                        () {
+                          return controller.isLoading.value
+                              ? Center(
+                                  child: Container(
+                                    padding: const EdgeInsets.all(12),
+                                    height: 50,
+                                    width: 50,
+                                    decoration: const BoxDecoration(
+                                      color: Colors.white,
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: const CircularProgressIndicator(
+                                      color: Colors.black,
+                                      strokeWidth: 2,
+                                    ),
+                                  ),
+                                )
+                              : TranslateTo(
+                                  translatedText: controller.translatedText.value,
+                                );
+                        },
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-
               SizedBox(
-                height: 30.h,
+                height: kIsWeb ? 35.h : 30.h,
               ),
-
               GestureDetector(
                 onTap: () {
                   controller.translateLanguageToAnother();
                 },
                 child: Container(
-                  width: ScreenUtil().screenWidth - 50,
+                  width: kIsWeb ? 150 : ScreenUtil().screenWidth - 50,
                   height: 35,
                   margin: const EdgeInsets.only(top: 20),
                   alignment: Alignment.center,
