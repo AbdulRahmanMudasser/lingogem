@@ -57,13 +57,14 @@ class TranslateFrom extends GetView<PromptScreenController> {
           height: 10,
         ),
 
-        // Word Count and Listen/Stop Button
+        // Word Count and Listen, Stop Button
         Obx(
           () {
             return Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                // Words Count, Words Limit
                 Text(
                   "${controller.wordsCount.value} / ${controller.wordsLimit} Words",
                   style: GoogleFonts.poppins(
@@ -72,6 +73,8 @@ class TranslateFrom extends GetView<PromptScreenController> {
                     color: const Color(0xFF000000),
                   ),
                 ),
+
+                // Speak, Mute Button
                 GestureDetector(
                   onTap: () {
                     if (controller.isSpeakingFrom.value) {
