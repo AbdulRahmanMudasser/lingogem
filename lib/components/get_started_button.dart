@@ -19,7 +19,7 @@ class GetStartedButton extends StatelessWidget {
         margin: const EdgeInsets.only(top: 20),
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: Colors.black.withOpacity(0.8),
+          color: Colors.black,
           borderRadius: BorderRadius.circular(5),
         ),
         child: Text(
@@ -27,7 +27,7 @@ class GetStartedButton extends StatelessWidget {
           style: GoogleFonts.poppins(
             fontWeight: FontWeight.w300,
             color: Colors.white,
-            fontSize: 18,
+            fontSize: 16,
           ),
         ),
       ),

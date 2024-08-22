@@ -58,10 +58,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       text: TextSpan(
                         style: GoogleFonts.poppins(),
                         children: [
-                          const TextSpan(
+                          TextSpan(
                             text: 'Translate',
                             style: TextStyle(
-                              fontSize: 30,
+                              fontSize: 30.sp,
                               fontWeight: FontWeight.bold,
                               color: Colors.black,
                             ),
@@ -69,28 +69,28 @@ class _HomeScreenState extends State<HomeScreen> {
                           TextSpan(
                             text: ' Every\n',
                             style: TextStyle(
-                              fontSize: 30,
+                              fontSize: 30.sp,
                               fontWeight: FontWeight.bold,
                               color: Colors.brown.withOpacity(0.5),
                             ),
                           ),
-                          const TextSpan(
+                          TextSpan(
                             text: 'Type Word\n',
                             style: TextStyle(
-                              fontSize: 28,
+                              fontSize: 28.sp,
                               fontWeight: FontWeight.bold,
                               color: Colors.black,
                             ),
                           ),
-                          const WidgetSpan(
+                          WidgetSpan(
                             child: SizedBox(
-                              height: 35,
+                              height: 35.sh,
                             ),
                           ),
                           TextSpan(
                             text: 'Help You Communicate In\n',
                             style: TextStyle(
-                              fontSize: 14,
+                              fontSize: 14.sp,
                               fontWeight: FontWeight.w300,
                               color: Colors.black.withOpacity(0.5),
                             ),
@@ -98,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           TextSpan(
                             text: 'Different Languages\n',
                             style: TextStyle(
-                              fontSize: 14,
+                              fontSize: 14.sp,
                               fontWeight: FontWeight.w300,
                               color: Colors.black.withOpacity(0.5),
                             ),
@@ -135,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.w300,
                                   color: Colors.white,
-                                  fontSize: 16,
+                                  fontSize: 16.sp,
                                 ),
                               ),
                             ),
@@ -163,10 +163,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           text: TextSpan(
                             style: GoogleFonts.poppins(),
                             children: [
-                              const TextSpan(
+                              TextSpan(
                                 text: 'Translate',
                                 style: TextStyle(
-                                  fontSize: 30,
+                                  fontSize: 30.sp,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black,
                                 ),
@@ -174,15 +174,15 @@ class _HomeScreenState extends State<HomeScreen> {
                               TextSpan(
                                 text: ' Every\n',
                                 style: TextStyle(
-                                  fontSize: 30,
+                                  fontSize: 30.sp,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.brown.withOpacity(0.5),
                                 ),
                               ),
-                              const TextSpan(
+                              TextSpan(
                                 text: 'Type Word',
                                 style: TextStyle(
-                                  fontSize: 28,
+                                  fontSize: 28.sp,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black,
                                 ),
@@ -205,10 +205,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         text: TextSpan(
                           style: GoogleFonts.poppins(),
                           children: [
-                            const TextSpan(
+                            TextSpan(
                               text: 'Help You Communicate In\n',
                               style: TextStyle(
-                                fontSize: 30,
+                                fontSize: 30.sp,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black,
                               ),
@@ -216,15 +216,15 @@ class _HomeScreenState extends State<HomeScreen> {
                             TextSpan(
                               text: 'Different ',
                               style: TextStyle(
-                                fontSize: 28,
+                                fontSize: 28.sp,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.brown.withOpacity(0.5),
                               ),
                             ),
-                            const TextSpan(
+                            TextSpan(
                               text: 'Languages',
                               style: TextStyle(
-                                fontSize: 28,
+                                fontSize: 28.sp,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black,
                               ),

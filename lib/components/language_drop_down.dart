@@ -22,7 +22,7 @@ class _LanguageDropDownState extends State<LanguageDropDown> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
+      // padding: const EdgeInsets.symmetric(horizontal: 10),
       // width: ScreenUtil().screenWidth / 2.28,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
@@ -33,8 +33,9 @@ class _LanguageDropDownState extends State<LanguageDropDown> {
         ),
       ),
       child: DropdownButton<String>(
+        borderRadius: BorderRadius.circular(12),
         menuMaxHeight: 250,
-        padding: EdgeInsets.zero,
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         isExpanded: true,
         // isDense: true,
         value: selectedCountry,
