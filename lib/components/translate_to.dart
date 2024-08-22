@@ -1,50 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_tts/flutter_tts.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lingogem/controllers/prompt_screen_controller.dart';
 
-class TranslateTo extends StatefulWidget {
+class TranslateTo extends GetView<PromptScreenController> {
   const TranslateTo({super.key, required this.translatedText});
 
   final String translatedText;
-
-  @override
-  State<TranslateTo> createState() => _TranslateToState();
-}
-
-class _TranslateToState extends State<TranslateTo> {
-  final FlutterTts flutterTts = FlutterTts();
-
-  /// Text to Speech
-  Future<void> textToSpeech() async {
-    final text = widget.translatedText.trim();
-
-    // flutterTts.setVolume(100);
-
-    await flutterTts.speak(text);
-  }
-
-  /// Method to Copy
-  void copyToClipboard(String text) {
-    if (text.isEmpty) {
-      return;
-    } else {
-      Clipboard.setData(ClipboardData(text: text)).then(
-        (value) => _showSnackBar("Copied To Clipboard"),
-      );
-    }
-  }
-
-  // Show SnackBar
-  void _showSnackBar(String message) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message),
-        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-        behavior: SnackBarBehavior.floating,
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +16,7 @@ class _TranslateToState extends State<TranslateTo> {
         Expanded(
           child: SingleChildScrollView(
             child: Text(
-              widget.translatedText,
+              translatedText,
               style: GoogleFonts.poppins(
                 fontSize: 14,
                 color: Colors.black.withOpacity(0.5),
@@ -88,7 +50,7 @@ class _TranslateToState extends State<TranslateTo> {
           children: [
             // Copy to Clipboard Button
             GestureDetector(
-              onTap: () => copyToClipboard(widget.translatedText),
+              onTap: () => controller.copyToClipboard(translatedText),
               child: const Icon(
                 Icons.content_copy_rounded,
                 size: 20,
@@ -100,13 +62,22 @@ class _TranslateToState extends State<TranslateTo> {
               width: 10,
             ),
 
-            // Speak Button
             GestureDetector(
-              onTap: () => textToSpeech(),
-              child: const Icon(
-                Icons.volume_up_outlined,
-                size: 24,
-                color: Color(0xFF000000),
+              onTap: () {
+                if (controller.isSpeakingTo.value) {
+                  controller.stopSpeaking();
+                } else {
+                  controller.textToSpeechTo();
+                }
+              },
+              child: Obx(
+                () {
+                  return Icon(
+                    controller.isSpeakingTo.value ? Icons.stop_circle_outlined : Icons.volume_up_outlined,
+                    size: 24,
+                    color: const Color(0xFF000000),
+                  );
+                },
               ),
             ),
           ],
