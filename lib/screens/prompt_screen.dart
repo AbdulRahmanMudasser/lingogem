@@ -83,21 +83,28 @@ class PromptScreen extends GetView<PromptScreenController> {
                           ),
                         SizedBox(
                           width: ScreenUtil().screenWidth / 2.4,
-                          child: LanguageDropDown(
-                            onLanguageChanged: controller.handleSelectedCountryFrom,
-                            hintText: "From",
+                          child: Obx(
+                            () => LanguageDropDown(
+                              selectedCountry: controller.selectedCountryFrom.value,
+                              onLanguageChanged: controller.handleSelectedCountryFrom,
+                              hintText: "From",
+                            ),
                           ),
                         ),
                       ],
                     ),
 
                     // Swap Button
-                    const Column(
+                    Column(
                       children: [
-                        Icon(Icons.swap_horiz_outlined),
-                        SizedBox(
-                          height: 15,
+                        GestureDetector(
+                          onTap: () => controller.swappingLanguages(),
+                          child: const Icon(Icons.swap_horiz_outlined),
                         ),
+                        if (kIsWeb)
+                          const SizedBox(
+                            height: 15,
+                          ),
                       ],
                     ),
 
@@ -120,9 +127,12 @@ class PromptScreen extends GetView<PromptScreenController> {
                           ),
                         SizedBox(
                           width: ScreenUtil().screenWidth / 2.4,
-                          child: LanguageDropDown(
-                            onLanguageChanged: controller.handleSelectedCountryTo,
-                            hintText: "To",
+                          child: Obx(
+                            () => LanguageDropDown(
+                              selectedCountry: controller.selectedCountryTo.value,
+                              onLanguageChanged: controller.handleSelectedCountryTo,
+                              hintText: "To",
+                            ),
                           ),
                         ),
                       ],
