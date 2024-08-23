@@ -127,7 +127,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               margin: const EdgeInsets.only(top: 20),
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
-                                color: Colors.black.withOpacity(0.5),
+                                color: Colors.black,
                                 borderRadius: BorderRadius.circular(5),
                               ),
                               child: Text(
