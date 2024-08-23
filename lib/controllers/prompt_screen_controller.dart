@@ -9,8 +9,8 @@ import 'package:google_generative_ai/google_generative_ai.dart';
 class PromptScreenController extends GetxController {
   late TextEditingController textEditingController;
 
-  var selectedCountryFrom = RxString('');
-  var selectedCountryTo = RxString('');
+  var selectedCountryFrom = 'English - US'.obs;
+  var selectedCountryTo = 'Urdu'.obs;
 
   var translatedText = RxString('');
 
@@ -243,5 +243,12 @@ class PromptScreenController extends GetxController {
     isSpeakingFrom.value = false;
     isSpeakingTo.value = false;
     await flutterTts.stop();
+  }
+
+  // Swapping Languages
+  void swappingLanguages() {
+    String temp = selectedCountryFrom.value;
+    selectedCountryFrom.value = selectedCountryTo.value;
+    selectedCountryTo.value = temp;
   }
 }

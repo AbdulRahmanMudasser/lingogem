@@ -2,22 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lingogem/data/countries_data.dart';
 
-class LanguageDropDown extends StatefulWidget {
+class LanguageDropDown extends StatelessWidget {
   const LanguageDropDown({
     super.key,
     required this.onLanguageChanged,
     required this.hintText,
+    required this.selectedCountry,
   });
 
   final ValueChanged<String?> onLanguageChanged;
   final String hintText;
-
-  @override
-  State<LanguageDropDown> createState() => _LanguageDropDownState();
-}
-
-class _LanguageDropDownState extends State<LanguageDropDown> {
-  String? selectedCountry;
+  final String? selectedCountry;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +35,7 @@ class _LanguageDropDownState extends State<LanguageDropDown> {
         // isDense: true,
         value: selectedCountry,
         hint: Text(
-          widget.hintText,
+          hintText,
           style: GoogleFonts.poppins(
             fontSize: 14,
             color: const Color(0xFF000000),
@@ -88,11 +83,7 @@ class _LanguageDropDownState extends State<LanguageDropDown> {
           },
         ).toList(),
         onChanged: (value) {
-          setState(() {
-            selectedCountry = value;
-          });
-
-          widget.onLanguageChanged(value);
+          onLanguageChanged(value);
         },
       ),
     );
